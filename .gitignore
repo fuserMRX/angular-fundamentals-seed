@@ -30,3 +30,6 @@ npm-debug.log
 vendor/vendor.js
 vendor/vendor.map
 vendor/vendor-manifest.json
+
+.vscode/settings.json
+package-lock.json
