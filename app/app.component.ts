@@ -6,23 +6,20 @@ import { Component } from '@angular/core';
     template: `
     <div class='app'>
         <button (click)="handleClick()">Change Name</button>
-        <input type="text" [value]="name" 
-        (blur)="handleBlur($event)"
-        (input)="handleInput($event)"
-        > <!-- event binding-->
+        <input type="text" [ngModel]="name"
+        (ngModelChange)="handleChange($event)"
+        > <!-- [ngModel] ->> is taking property binding 
+        and (ngModelChange) ->> is taking event binding-->
+        <input type="text" [(ngModel)] = "name"> <!--two way data-binding using banana in a box-->
         <div>{{ name }}</div>
     </div>
     `
 })
 export class AppComponent {
     name: string = 'Todd';
-    //one-way data-binding
-    handleBlur(event: any) {
-        this.name = event.target.value;
-    }
-    //two-way data-binding
-    handleInput(event: any) {
-        this.name = event.target.value;
+    //two-way like data-binding
+    handleChange(value: string) {
+        this.name = value;
     }
     handleClick() {
         this.name = 'Novodid';
